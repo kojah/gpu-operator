@@ -987,7 +987,7 @@ func createDevCharSymlinks(driverInfo driverInfo, disableDevCharSymlinkCreation 
 }
 
 func createStatusFile(statusFile string) error {
-	_, err := os.Create(statusFile)
+	err := os.WriteFile(statusFile, nil, 0o666)
 	if err != nil {
 		return fmt.Errorf("unable to create status file %s: %s", statusFile, err)
 	}
